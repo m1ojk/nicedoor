@@ -6,7 +6,7 @@ from picamera import PiCamera
 import time
 import cv2
 
-import pi_email
+import helper.pi_email as pi_email
 
 def save_and_email(image):
     path = "/home/pi/Pictures/img.%s.png"%(t)
