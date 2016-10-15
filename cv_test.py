@@ -9,9 +9,10 @@ import cv2
 import helper.pi_email as pi_email
 
 def save_and_email(image):
-    path = "/home/pi/Pictures/img.%s.png"%(t)
-    cv2.imwrite(path, image)
-    pi_email.email_attachment(path)
+  t=time.strftime("%d-%m-%y.%H_%M_%S")
+  path = "/home/pi/Pictures/img.%s.png"%(t)
+  cv2.imwrite(path, image)
+  pi_email.email_attachment(path)
 
 # initialize the camera and grab a reference to the raw camera capture
 camera = PiCamera()
@@ -20,7 +21,6 @@ rawCapture = PiRGBArray(camera)
  
 # allow the camera to warmup
 time.sleep(0.3)
-t=time.strftime("%d-%m-%y.%H_%M_%S")
 # grab an image from the camera
 
 camera.capture(rawCapture, format="bgr")
