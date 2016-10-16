@@ -1,14 +1,27 @@
 #!/usr/bin/env python
+from __future__ import print_function
 import subprocess
 
-send_msg_path = "/projects/scripts/email_msg.sh"
-send_attach_path = "/projects/scripts/email_attach.sh"
-subject = "PiCam"
+class PiEmail:
+  send_msg_path = "/projects/scripts/email_msg.sh"
+  send_attach_path = "/projects/scripts/email_attach.sh"
+  send_msg_attach_path = "/projects/scripts/email_msg_attach.sh"
 
-def email_attachment(file_path):
-  subprocess.Popen([send_attach_path, subject, file_path])
-    
-def email_message(message):
-  subprocess.Popen([send_msg_path, subject, message])
+  subject = "PiCam"
+
+  @staticmethod
+  def email_attachment(file_path):
+    subprocess.Popen([PiEmail.send_attach_path, PiEmail.subject, file_path])
+
+  @staticmethod
+  def email_message(message):
+    subprocess.Popen([PiEmail.send_msg_path, PiEmail.subject, message])
+
+  @staticmethod
+  def email_message_attachment(message, file_path):
+    tmp_msg_file_path = "/tmp/cv_email_message"
+    f = open(tmp_msg_file_path, 'w')
+    print(message, file=f)
+    subprocess.Popen([PiEmail.send_msg_attach_path, PiEmail.subject, tmp_msg_file_path, file_path])
 
 
