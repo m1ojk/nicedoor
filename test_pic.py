@@ -19,11 +19,18 @@ time.sleep(0.3)
 
 camera.capture(rawCapture, format="bgr")
 image = rawCapture.array
+
 sim = PiTool.circle_vision_filter(image)
 sim = PiTool.find_circles(sim)
+
 image = PiTool.get_doorhole_roi(image)
+
 # display the image on screen and wait for a keypress
+cv2.namedWindow("Image",cv2.WINDOW_NORMAL) 
+cv2.namedWindow("Vision",cv2.WINDOW_NORMAL) 
+
 cv2.imshow("Image", image)
-#cv2.imshow("Vision", sim)
+cv2.imshow("Vision", sim)
+
 cv2.waitKey(0)
 

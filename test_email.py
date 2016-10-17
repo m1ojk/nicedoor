@@ -6,7 +6,6 @@ from picamera import PiCamera
 import time
 import cv2
 
-from helper.pi_email import PiEmail
 from helper.pi_tool import PiTool
 
 def save_and_email(image):
@@ -17,7 +16,7 @@ def save_and_email(image):
 
 # initialize the camera and grab a reference to the raw camera capture
 camera = PiCamera()
-camera.resolution = PiTool.RESOLUTION_SQ_X
+camera.resolution = PiTool.RESOLUTION_SQ_L
 rawCapture = PiRGBArray(camera)
 
 # allow the camera to warmup
@@ -27,10 +26,10 @@ time.sleep(0.3)
 camera.capture(rawCapture, format="bgr")
 #image = PiTool.get_roi_doorhole(rawCapture.array)
 image = rawCapture.array
-image = PiTool.find_circles(image)
+image = PiTool.get_doorhole_roi(image)
 
 # display the image on screen and wait for a keypress
 #cv2.imshow("Image", image)
 #cv2.waitKey(0)
 
-save_and_email(image)
+PiTool.save_and_email(image, "cv_test")
