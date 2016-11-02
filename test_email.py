@@ -32,4 +32,4 @@ image = PiTool.get_doorhole_roi(image)
 #cv2.imshow("Image", image)
 #cv2.waitKey(0)
 
-PiTool.save_and_email(image, "cv_test")
+PiTool.save_and_email(image, "test_email")

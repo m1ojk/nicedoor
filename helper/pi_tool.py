@@ -1,4 +1,4 @@
-from pi_email import PiEmail
+from .pi_email import PiEmail
 
 import cv2
 import time
@@ -29,7 +29,7 @@ class PiTool:
     blur_after = 20
     thres = 37 if w == PiTool.RESOLUTION_SQ_L[1] else 25
     image = cv2.blur(image, (blurriness,blurriness))
-    ret,image = cv2.threshold(image, thres, 255,cv2.THRESH_BINARY)
+    ret,image = cv2.threshold(image, thres, 205,cv2.THRESH_BINARY)
     image = cv2.blur(image, (blur_after, blur_after))
     return image
 
