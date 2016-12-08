@@ -18,7 +18,7 @@ case "$1" in
   start)
     echo "Starting goldeneye"
     # run application you want to start
-    ./dooreye
+    /projects/workspace/nicedoormat/dooreye
     echo "Started..."
     ;;
   stop)
