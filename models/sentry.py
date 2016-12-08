@@ -1,5 +1,6 @@
 import cv2
 import time
+import logging
 
 class Sentry:
   #__face_cascade = cv2.CascadeClassifier('haarcascades/haarcascade_frontalface_default.xml')
@@ -20,7 +21,7 @@ class Sentry:
   def is_alert(self, image, indicate=False):
     is_detected = self.__is_face_detected(image, indicate)
     should_alert = self.__should_alert()
-    # print("Detected: %r  alert: %r"%(is_detected, should_alert))
+    logging.debug("Detected: %r  alert: %r"%(is_detected, should_alert))
     return is_detected and should_alert
 
   def __is_face_detected(self, image, indicate):

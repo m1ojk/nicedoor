@@ -5,14 +5,11 @@ from picamera.array import PiRGBArray
 from picamera import PiCamera
 import time
 import cv2
+import logging
 
 from helper.pi_tool import PiTool
 
-def save_and_email(image):
-  t=time.strftime("%d-%m-%y.%H_%M_%S")
-  path = "/home/pi/Pictures/img.%s.png"%(t)
-  cv2.imwrite(path, image)
-  PiEmail.email_attachment(path)
+logging.basicConfig(filename='log/test_email.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 
 # initialize the camera and grab a reference to the raw camera capture
 camera = PiCamera()

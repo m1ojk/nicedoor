@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /projects/workspace/nicedoormat
+/home/pi/.virtualenvs/cv3/bin/python test_email.py &

@@ -3,9 +3,12 @@ from picamera.array import PiRGBArray
 from picamera import PiCamera
 import time
 import cv2
+import logging
 
 from models.sentry import Sentry
 from helper.pi_tool import PiTool
+
+logging.basicConfig(filename='log/main.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 
 SHOW_WINDOW = False
 USE_CIRCLE_FIRST = False

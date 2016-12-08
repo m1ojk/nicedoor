@@ -4,6 +4,8 @@ import cv2
 import time
 import numpy as np
 
+import logging
+
 class PiTool:
   RESOLUTION_5MP=(2560, 1920)
   RESOLUTION_1080P=(1920,1088)
@@ -42,7 +44,7 @@ class PiTool:
     if circles is not None:
       # convert the (x, y) coordinates and radius of the circles to integers
       circles = np.round(circles[0, :]).astype("int")
-      print("found Circles %s"%(len(circles)))
+      logging.debug("found Circles %s"%(len(circles)))
       # loop over the (x, y) coordinates and radius of the circles
       for (x, y, r) in circles:
         # draw the circle in the output image, then draw a rectangle
@@ -72,4 +74,5 @@ class PiTool:
     t=time.strftime("%d-%m-%y.%H_%M_%S")
     path = "/home/pi/Pictures/img.%s.png"%(t)
     cv2.imwrite(path, image)
+    logging.debug("File saved %s"%(path))
     PiEmail.email_message_attachment(message, path)

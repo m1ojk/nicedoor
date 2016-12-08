@@ -5,8 +5,11 @@ from picamera.array import PiRGBArray
 from picamera import PiCamera
 import time
 import cv2
+import logging
 
 from helper.pi_tool import PiTool
+
+logging.basicConfig(filename='log/test_pic.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 
 # initialize the camera and grab a reference to the raw camera capture
 camera = PiCamera()
